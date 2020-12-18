@@ -79,7 +79,7 @@ const StartGameScreen = props => {
                 {confirmedOutput}
             </View>
         </TouchableWithoutFeedback>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
