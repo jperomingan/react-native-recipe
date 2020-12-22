@@ -107,6 +107,14 @@ const StartGameScreen = props => {
 }
 
 const styles = StyleSheet.create({
+    handler: {
+        width: '100%',
+        height: 90,
+        paddingTop: 36,
+        backgroundColor: Colors.primary,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     screen: {
         flex: 1,
         padding: 10,
