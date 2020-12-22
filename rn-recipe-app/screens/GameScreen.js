@@ -44,7 +44,6 @@ const GameScreen = props => {
         const { userChoice, onGameOver } = props;
         useEffect(() => {
             const updateLayout = () => {
-                if (Dimensions.get('window').width > 600)
                 setAvailableDeviceWidth(Dimensions.get('window').width);
                 setAvailableDeviceHeight(Dimensions.get('window').height);
             }
