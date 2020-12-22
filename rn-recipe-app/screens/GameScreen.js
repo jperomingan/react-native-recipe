@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, Alert, ScrollView, FlatList, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { ScreenOrientation } from 'expo';
 
 import NumberContainer from '../components/NumberContainer';
 import Card from '../components/Card';
@@ -26,6 +27,9 @@ const renderListItem = (listLength, itemData) => (
 </View>);
 
 const GameScreen = props => {
+        // ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+        
+
         const initialGuess = generateRandomBetween(1, 100, props.userChoice);
         const [currentGuess, setCurrentGuess] = useState(initialGuess);
         const [pastGuesses, setPastGuesses] = useState([initialGuess.toString()]);
@@ -40,14 +44,15 @@ const GameScreen = props => {
         const { userChoice, onGameOver } = props;
         useEffect(() => {
             const updateLayout = () => {
+                if (Dimensions.get('window').width > 600)
                 setAvailableDeviceWidth(Dimensions.get('window').width);
                 setAvailableDeviceHeight(Dimensions.get('window').height);
             }
             Dimensions.addEventListener('change', updateLayout)
             return () => {
                 Dimensions.removeEventListener('change', updateLayout);
-            }
-        })
+            };
+        });
         useEffect(() => {
             if (currentGuess === userChoice) {
                 onGameOver(pastGuesses.length);
